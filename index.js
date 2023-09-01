@@ -22,7 +22,6 @@ const btnInfoData = async (id) => {
     const data = await res.json();
     const btnInfo = data.data
     if (btnInfo.length === 0) {
-        console.log('i am 0');
         const videoContain = document.getElementById('no-video-con');
         videoContain.textContent = '';
         videoContain.classList.remove('hidden')
@@ -44,7 +43,6 @@ const btnInfoData = async (id) => {
     const videoContain = document.getElementById('video-con');
     videoContain.textContent = '';
     btnInfo.forEach((singleCard) => {
-        // console.log(singleCard)
 
         const image = singleCard?.authors[0];
         const img = image?.profile_picture;
@@ -55,6 +53,7 @@ const btnInfoData = async (id) => {
         div.innerHTML = `
         <div class="rounded-lg h-[340px]">
                     <img class="h-56 w-full rounded-xl" src=${singleCard?.thumbnail}>
+                    <p>${singleCard.others.posted_date}</p>
                     <div class="flex justify-start mt-5 gap-3 items-center">
                         <img class="w-10 h-10 border-2 rounded-3xl" src=${img}>
                         <h3 class="text-base text-[#171717]">
