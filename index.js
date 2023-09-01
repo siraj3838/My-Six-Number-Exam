@@ -49,11 +49,21 @@ const btnInfoData = async (id) => {
         const profileName = image?.profile_name;
         const div = document.createElement('div');
 
+        let secondNum = singleCard?.others?.posted_date
+        // console.log(secondNum)
+        let hour = Math.floor(secondNum / 60);
+        let result = hour / 60;
+        let result2 = parseInt(result);
+        let resultFloat = parseFloat(result2);
+        let minute = secondNum % 60;
+        console.log(resultFloat, minute)
+        
 
         div.innerHTML = `
-        <div class="rounded-lg h-[340px]">
+        <div class="rounded-lg h-[340px] relative">
                     <img class="h-56 w-full rounded-xl" src=${singleCard?.thumbnail}>
-                    <p>${singleCard.others.posted_date}</p>
+                    <p class="absolute bg-[#171717] text-white ml-36 lg:ml-[200px] -mt-8"> ${resultFloat ? resultFloat : ''}<span>${resultFloat ? 'hrs' : ''}</span>${minute ? minute : ''}
+                    <span>${minute ? 'min ago' : ''}</span></p>
                     <div class="flex justify-start mt-5 gap-3 items-center">
                         <img class="w-10 h-10 border-2 rounded-3xl" src=${img}>
                         <h3 class="text-base text-[#171717]">
